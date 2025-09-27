@@ -1,0 +1,11 @@
+function App() {
+    var name="ali"
+  return (
+    <div>
+      <h1>Hello react js</h1>
+      <h2>Hello world {name}</h2>
+    </div>
+  );
+}
+
+export default App;
