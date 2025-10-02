@@ -1,0 +1,56 @@
+ code of video 3
+
+function App() {
+    var name="ali"
+  return (
+    <div>
+      <h1>Hello react js</h1>
+      <h2>Hello world {name}</h2>
+    </div>
+  );
+}
+
+export default App;
+
+code of video 7:
+
+import { useState } from "react";
+
+function App() {
+ const [text, setText] = useState("");
+
+  function handleChange(a) {
+    setText(a.target.value);
+  }
+
+    function handleClick(){
+      alert("button is clicked");
+    }
+
+function handlesubmit(event){
+event.preventDefault();
+alert("form has been submitted")
+}
+
+  return (
+    <div>
+
+  <input type="text" onChange={handleChange} />
+      <p>Typed value: {text}</p>
+
+
+      <form onSubmit={handlesubmit}>
+        <input type="text"></input>
+        <button type="submit">submit</button>
+        </form> 
+
+    <button onClick={handleClick}>click</button>
+    </div>
+  );
+}
+
+
+export default App;
+
+
+//<button onclick=alert("button is clicked")></button>
