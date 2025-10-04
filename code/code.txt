@@ -54,3 +54,24 @@ export default App;
 
 
 //<button onclick=alert("button is clicked")></button>
+
+code of video 9: 
+
+function App() {
+ const names=["mariyam","omaima","ali"];
+  return (
+    <div>
+{names.map((name,i)=>(
+
+  <p key={i}>{name}</p>
+
+))};
+  
+    </div>
+  );
+}
+
+
+export default App;
+
+
