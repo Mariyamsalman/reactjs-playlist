@@ -75,3 +75,32 @@ function App() {
 export default App;
 
 
+code of video 11:
+import { useRef } from "react";
+
+function App() {
+const inputref=useRef();
+
+  //const[name,setname]=useState("");
+
+function handleChange(){
+ alert("typed name:"+inputref.current.value)
+}
+  return (
+    <div>
+
+<input 
+type="text"
+
+ref={inputref}
+placeholder="enter your name"
+/>
+<button onClick={handleChange}>showname</button>
+    </div>
+  );
+}
+
+
+export default App;
+
+
