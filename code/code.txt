@@ -104,3 +104,24 @@ placeholder="enter your name"
 export default App;
 
 
+code of vid 13:
+import { useRef ,useState,useEffect} from "react";
+
+function App() {
+
+  const [count,setCount]=useState(0);
+  useEffect(()=>{
+console.log("count changed:",count);
+  },[count])
+  return (
+    <div>
+<p>Count:{count}</p>
+<button onClick={()=>setCount(count+1)}>increase</button>
+    </div>
+  );
+}
+
+
+export default App;
+
+
