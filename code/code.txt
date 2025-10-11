@@ -124,4 +124,47 @@ console.log("count changed:",count);
 
 export default App;
 
+code of vide 15:
+
+example 1:
+import { useRef ,useState,useEffect} from "react";
+
+function App() {
+
+  const ref1=useRef(0)
+  
+  function func(){
+ref1.current.focus();
+  }
+  return (
+    <div>
+<input ref={ref1} type="text" placeholder="type something"/>
+<button onClick={func}>focus input</button>
+    </div>
+  );
+}
+
+
+export default App;
+
+
+example 2:
+import { useRef, useState } from "react";
+
+function Counter() {
+  const [count, setCount] = useState(0);
+  const renderCount = useRef(0);
+  renderCount.current = renderCount.current + 1;
+
+  return (
+  <div>
+     <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increase</button>
+    <p>Component Rendered: {renderCount.current} times</p>
+    </div>
+     );
+  }
+
+export default Counter;
+
 
