@@ -166,5 +166,22 @@ function Counter() {
   }
 
 export default Counter;
+ code of vide0 17:import { createContext, useContext } from "react";
+const Theme=createContext();
+function App() {
+  return (
+<div>
+<Theme.Provider value="dark">
+<NestedComponent2></NestedComponent2>
+</Theme.Provider>
+</div>
+  );
+}
+function NestedComponent2(){
+  const theme1=useContext(Theme);
+  return<p>current theme:dark</p>
+}
 
+
+export default App;
 
