@@ -184,4 +184,23 @@ function NestedComponent2(){
 
 
 export default App;
+code of video 19:
+import { createContext, useContext } from "react";
+
+function App() {
+ const [user, setUser] = useState(null);
+  if (isLoggedIn) {
+ 
+}
+setUser
+
+return (
+<div>
+
+</div>
+  );
+}
+
+
+export default App;
 
