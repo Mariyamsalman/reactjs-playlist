@@ -203,4 +203,52 @@ return (
 
 
 export default App;
+code of video 21:
+import { Routes, Route, Link } from "react-router-dom";
+
+function App() {
+
+
+  return (
+    <div>
+      <nav>
+        <Link to="/">Home</Link>|
+        <Link to="/about">About</Link>
+
+      </nav>
+<Routes>
+  <Route path="/" element={<Home/>}/>
+  <Route path="/about" element={<About/>}/>
+
+</Routes>
+
+
+
+
+    </div>
+  );
+}
+
+function Home(){
+  return <h2>welcome to home page</h2>
+}
+function About(){
+  return <h2>welcome to about page</h2>
+}
+
+export default App;
+
+
+ main.jsx code:
+
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import { BrowserRouter } from "react-router-dom";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+);
 
