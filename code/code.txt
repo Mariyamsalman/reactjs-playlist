@@ -353,4 +353,37 @@ function handlelogin(){
 
 
 export default App;
+ code of video 27:
+
+import {createStore} from 'redux';
+
+const store=createStore(counterReducer);
+
+function App() {
+ store.dispatch({type:"INCREMENT"});
+     console.log(store.getState());
+  store.dispatch({type:"DECREMENT"});
+     console.log(store.getState());
+
+
+  return (
+    <div>
+    <h1>redux</h1>
+    </div>
+  );
+}
+function counterReducer(state={count:0},action){
+  if (action.type==="INCREMENT"){
+
+    return {count:state.count+1};
+      }
+      if (action.type==="DECREMENT"){
+
+    return {count:state.count-1};
+
+      }
+      return state;
+}
+
+export default App;
 
