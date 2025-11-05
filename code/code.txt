@@ -387,3 +387,45 @@ function counterReducer(state={count:0},action){
 
 export default App;
 
+code of video 29:
+
+import {createStore,applyMiddleware} from 'redux';
+import thunk from 'redux-thunk';
+
+const store=createStore(counterReducer,applyMiddleware(thunk));
+
+
+function App() {
+
+ store.dispatch({type:"INCREMENT"});
+     console.log("after instant increment",store.getState());
+
+   store.dispatch(increamentwithAsync());
+       console.log("after 5 secs", store.getState());
+
+
+
+  return (
+    <div>
+    <h1>async redux</h1>
+    </div>
+  );
+}
+function counterReducer(state={count:0},action){
+  if (action.type==="INCREMENT"){
+
+    return {count:state.count+1};
+      }
+      return state;
+}
+ function increamentwithAsync(){
+  return function(dispatch){
+    console.log("this will run in 5 secs");
+    setTimeout(()=>
+    {
+      dispatch({type:"INCREMENT"});
+    },5000);
+  };
+ }
+export default App;
+
