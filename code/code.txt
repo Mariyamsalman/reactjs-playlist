@@ -429,3 +429,39 @@ function counterReducer(state={count:0},action){
  }
 export default App;
 
+ code of video 31:
+
+import { useReducer } from "react";
+
+
+
+function App() {
+const initialState={count:0};
+const [state,dispatch]=useReducer(counterReducer,initialState);
+
+
+  return (
+    <div>
+    <h1>useReducer</h1>
+    <h2>Count:{state.count}</h2>
+    <button onClick={()=>dispatch({type:"INCREMENT"})}>Increment</button>
+     <button onClick={()=>dispatch({type:"DECREMENT"})}>Decrement</button>
+    </div>
+  );
+}
+function counterReducer(state,action){
+  if (action.type==="INCREMENT"){
+
+    return {count:state.count+1};
+      }
+        if (action.type==="DECREMENT"){
+
+    return {count:state.count-1};
+      }
+      return state;
+}
+
+ 
+export default App;
+
+
