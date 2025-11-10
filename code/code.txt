@@ -464,4 +464,53 @@ function counterReducer(state,action){
  
 export default App;
 
+code of video 35:
+import React from "react";
+import SimpleErrorBoundary from "./SimpleErrorBoundary";
+
+function BuggyButton() {
+  const [count, setCount] = React.useState(0);
+
+  if (count === 3) throw new Error("I crashed!"); 
+
+  return <button onClick={() => setCount(count + 1)}>Click: {count}</button>;
+}
+
+function App() {
+  return (
+    <div>
+      <h1>My App</h1>
+      <SimpleErrorBoundary>
+        <BuggyButton />
+      </SimpleErrorBoundary>
+    </div>
+  );
+}
+
+export default App;
+
+import React from "react";
+import SimpleErrorBoundary from "./SimpleErrorBoundary";
+
+function BuggyButton() {
+  const [count, setCount] = React.useState(0);
+
+  if (count === 3) throw new Error("I crashed!"); 
+
+  return <button onClick={() => setCount(count + 1)}>Click: {count}</button>;
+}
+
+function App() {
+  return (
+    <div>
+      <h1>My App</h1>
+      <SimpleErrorBoundary>
+        <BuggyButton />
+      </SimpleErrorBoundary>
+    </div>
+  );
+}
+
+export default App;
+
 
