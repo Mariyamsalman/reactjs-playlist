@@ -512,5 +512,57 @@ function App() {
 }
 
 export default App;
+ code of video 37:
+import axios from "axios";
+import { useEffect } from "react";
+
+function App() {
+
+  async function fetchUsers() {
+    try {
+      const response = await axios.get(
+        "https://jsonplaceholder.typicode.com/users"
+      );
+      console.log("Fetched users:", response.data);
+    } catch (error) {
+      console.error("Failed to fetch users:", error);
+    }
+  }
+
+  async function createUser(userData) {
+    try {
+      const response = await axios.post(
+        "https://jsonplaceholder.typicode.com/users",
+        userData,
+        {
+          headers: { "Content-Type": "application/json" },
+        timeout: 5000,
+        }
+      );
+      console.log("User created (fake API response):", response.data);
+    } catch (error) {
+      if (error.response) {
+        console.error(
+          "Server error:",
+          error.response.status,
+          error.response.data
+        );
+      } else if (error.request) {
+        console.error("No response received:", error.request);
+      } else {
+        console.error("Error in setup:", error.message);
+      }
+    }
+  }
+
+  useEffect(() => {
+    fetchUsers();
+    createUser({ name: "Mariyam", email: "mariyam@example.com" });
+  }, []);
+
+  return <h1>Check the console for API results!</h1>;
+}
+
+export default App;
 
 
