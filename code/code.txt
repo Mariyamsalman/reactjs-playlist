@@ -565,4 +565,45 @@ function App() {
 
 export default App;
 
+ code of video 39:
+import React from "react";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+
+const fetchUsers = async () => {
+  const response = await axios.get("https://jsonplaceholder.typicode.com/users");
+return response.data;
+};
+
+function App() {
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ["users"],//unique id /key
+      queryFn: fetchUsers,
+  });
+
+  if (isLoading) {
+       console.log("Data is being fetched...");
+    return <p>Loading...</p>;
+  }
+
+  if (isError) {
+    console.log("An error occurred:", error.message);
+      return <p>Error: {error.message}</p>;
+  }
+
+  console.log("Fetched users:", data);
+
+  return (
+  <div>
+      <h1>Users fetched from API:</h1>
+      {data.map((user) => (
+          <p key={user.id}>{user.name}</p>
+      ))}
+    </div>
+  );
+}
+
+export default App;
+
+
 
