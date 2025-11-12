@@ -429,3 +429,140 @@ function counterReducer(state={count:0},action){
  }
 export default App;
 
+ code of video 31:
+
+import { useReducer } from "react";
+
+
+
+function App() {
+const initialState={count:0};
+const [state,dispatch]=useReducer(counterReducer,initialState);
+
+
+  return (
+    <div>
+    <h1>useReducer</h1>
+    <h2>Count:{state.count}</h2>
+    <button onClick={()=>dispatch({type:"INCREMENT"})}>Increment</button>
+     <button onClick={()=>dispatch({type:"DECREMENT"})}>Decrement</button>
+    </div>
+  );
+}
+function counterReducer(state,action){
+  if (action.type==="INCREMENT"){
+
+    return {count:state.count+1};
+      }
+        if (action.type==="DECREMENT"){
+
+    return {count:state.count-1};
+      }
+      return state;
+}
+
+ 
+export default App;
+
+code of video 35:
+import React from "react";
+import SimpleErrorBoundary from "./SimpleErrorBoundary";
+
+function BuggyButton() {
+  const [count, setCount] = React.useState(0);
+
+  if (count === 3) throw new Error("I crashed!"); 
+
+  return <button onClick={() => setCount(count + 1)}>Click: {count}</button>;
+}
+
+function App() {
+  return (
+    <div>
+      <h1>My App</h1>
+      <SimpleErrorBoundary>
+        <BuggyButton />
+      </SimpleErrorBoundary>
+    </div>
+  );
+}
+
+export default App;
+
+import React from "react";
+import SimpleErrorBoundary from "./SimpleErrorBoundary";
+
+function BuggyButton() {
+  const [count, setCount] = React.useState(0);
+
+  if (count === 3) throw new Error("I crashed!"); 
+
+  return <button onClick={() => setCount(count + 1)}>Click: {count}</button>;
+}
+
+function App() {
+  return (
+    <div>
+      <h1>My App</h1>
+      <SimpleErrorBoundary>
+        <BuggyButton />
+      </SimpleErrorBoundary>
+    </div>
+  );
+}
+
+export default App;
+ code of video 37:
+import axios from "axios";
+import { useEffect } from "react";
+
+function App() {
+
+  async function fetchUsers() {
+    try {
+      const response = await axios.get(
+        "https://jsonplaceholder.typicode.com/users"
+      );
+      console.log("Fetched users:", response.data);
+    } catch (error) {
+      console.error("Failed to fetch users:", error);
+    }
+  }
+
+  async function createUser(userData) {
+    try {
+      const response = await axios.post(
+        "https://jsonplaceholder.typicode.com/users",
+        userData,
+        {
+          headers: { "Content-Type": "application/json" },
+        timeout: 5000,
+        }
+      );
+      console.log("User created (fake API response):", response.data);
+    } catch (error) {
+      if (error.response) {
+        console.error(
+          "Server error:",
+          error.response.status,
+          error.response.data
+        );
+      } else if (error.request) {
+        console.error("No response received:", error.request);
+      } else {
+        console.error("Error in setup:", error.message);
+      }
+    }
+  }
+
+  useEffect(() => {
+    fetchUsers();
+    createUser({ name: "Mariyam", email: "mariyam@example.com" });
+  }, []);
+
+  return <h1>Check the console for API results!</h1>;
+}
+
+export default App;
+
+
