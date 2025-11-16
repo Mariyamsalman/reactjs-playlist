@@ -605,5 +605,13 @@ function App() {
 
 export default App;
 
+code of video 41:
 
+//before batching
+setA(1);
+setB(2); //rerendered twice
+
+//after batching
+setA(1);
+setB(2);//rerendered once ,batched state updates of one event loop turn
 
