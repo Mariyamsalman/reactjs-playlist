@@ -615,3 +615,60 @@ setB(2); //rerendered twice
 setA(1);
 setB(2);//rerendered once ,batched state updates of one event loop turn
 
+Code of video 43:
+
+// App.jsx
+import React, { useState, useTransition } from "react";
+
+export default function Search() {
+  const [input, setInput] = useState("");
+  const [results, setResults] = useState([]);
+  const [isPending, startTransition] = useTransition();
+
+  const bigList = Array.from({ length: 5000 }, (_, i) => `Item ${i}`);//item 0
+
+  function handleChange(e) {
+    const value = e.target.value;
+    setInput(value);
+
+    startTransition(() => {
+      const filtered = bigList.filter((item) =>
+        item.toLowerCase().includes(value.toLowerCase())//item 0 includes 0
+      );
+      setResults(filtered);
+    });
+  }
+
+  return (
+    <div>
+      <input value={input} onChange={handleChange} placeholder="Type to filter" />
+      {isPending && <p>Loading...</p>}
+      {results.map((r) => (
+        <p key={r}>{r}</p>
+      ))}
+    </div>
+  );
+}
+ code of video 45:
+
+// App.jsx
+import React, { useState, Suspense } from "react";
+const Blogs=React.lazy(() => import("./Blogs"));
+export default function App() {
+ const [show,setShow]=useState(false);
+
+  return (
+    <div>
+   <button onClick={()=>setShow(true)}>open blogs</button>
+ {show&&
+ <Suspense fallback={<p>loading....</p>}>
+   <Blogs/>
+  </Suspense>
+  }
+    </div>
+  );
+  }
+export default function blogs(){
+    return <h1>welcome to blogs</h1>
+}
+
