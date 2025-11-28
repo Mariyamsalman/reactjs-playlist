@@ -671,4 +671,20 @@ export default function App() {
 export default function blogs(){
     return <h1>welcome to blogs</h1>
 }
+code of video 49:
+import { render, screen, fireEvent } from "@testing-library/react";
+import '@testing-library/jest-dom'; 
+import App from "./App";
+
+test("shows message after button click", () => {
+
+  render(<App />);
+
+  const btn = screen.getByText("Show Message");
+
+  fireEvent.click(btn);
+
+  const message = screen.getByText("Hello User!");
+  expect(message).toBeInTheDocument();
+});
 
